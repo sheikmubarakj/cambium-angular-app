@@ -1,0 +1,97 @@
+<div class="container">
+
+  <!-- <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div> -->
+<br>
+  <div class="jumbotron text-center">
+      <div class="row">
+          <span class="col-sm-2" style="padding-top: 7px;">
+            <label for="">Search By Member ID: </label>
+          </span>
+          <span class="col-sm-6">
+            <input type="text" class="form-control" ng-model="main.searchFilter" />
+          </span>
+          <span class="col-sm-2">
+              <button class="btn btn-primary" ng-click="main.getData()">Search</button>
+          </span>
+        </div>
+      <div class="row">
+        <span class="col-sm-2" style="padding-top: 7px;">
+          <label for="">Ownership: </label>
+        </span>
+        <span class="col-sm-9">
+          <select class="form-control" ng-options="item.name for item in main.ownershipTypes" ng-model="main.selectedOwnerShip"
+            ng-change="main.filterOwnerShip(main.selectedOwnerShip.key)"></select>
+        </span>
+      </div>
+      <br>
+      
+      <div class="row">
+        <span class="col-sm-2" style="padding-top: 7px;">
+          <label for="">Loan Status: </label>
+        </span>
+        <span class="col-sm-9">
+          <select class="form-control" ng-options="item for item in main.loanStatuses" ng-model="main.selectedLoanStatus"
+            ng-change="main.filterByLoanStatus(main.selectedLoanStatus)"></select>
+        </span>
+      </div>
+      <br>
+      
+      <div class="row">
+        <span class="col-sm-2" style="padding-top: 7px;">
+          <label for="">Page Limit: </label>
+        </span>
+        <span class="col-sm-9">
+          <select class="form-control" ng-options="item for item in main.pageListCount" ng-model="main.selectedPageCount"
+            ng-change="main.getData(main.selectedPageCount)"></select>
+        </span>
+      </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.filteredResult">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{ awesomeThing.title }}</h3>
+        </div>
+        <span>
+          <label for="">Grade: </label>
+          <span style="font-weight: bold;">
+             {{awesomeThing.grade}}
+          </span>
+        </span>
+        <br>
+        <span>
+          <label for="">Ownership: </label>
+          <span style="font-weight: bold;">
+             {{awesomeThing.home_ownership}}
+          </span>
+        </span>
+        <br>
+        <span>
+          <label for="">Loan Amount: </label>
+          <span style="font-weight: bold;">
+             {{awesomeThing.loan_amnt}}
+          </span>
+        </span>
+        <br>
+        <span>
+           <label for="">Loan Status: </label>
+           <span style="font-weight: bold;">
+              {{awesomeThing.loan_status}}
+           </span>
+         </span>
+      </div>
+    </div>
+    <div ng-if="!main.filteredResult.length">
+        <br>
+        <center>
+          <b>No record found. Please check the filters and try again.</b>
+        </center>
+      
+      </div>
+  </div>
+
+</div>
